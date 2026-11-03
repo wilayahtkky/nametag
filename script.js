@@ -3,7 +3,7 @@
 // bu lili : https://script.google.com/macros/s/AKfycbxMlmOLvluWXR8fSP4lh6z4Jy8Fm5PZtpVE3N4hX5r51qw1ARkuHQtbUg4Ku5KQHuM/exec
 
 document.addEventListener('DOMContentLoaded', () => {
-  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxS2MZWtUyveEo6FyKHfsL5sNLkWTCIJlCyaPRbtMHmoGrmrOCJXEJWvv4esYBSzsO8/exec';
+  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxMlmOLvluWXR8fSP4lh6z4Jy8Fm5PZtpVE3N4hX5r51qw1ARkuHQtbUg4Ku5KQHuM/exec';
 
   // Tanggal batas pendaftaran: 06 Desember 2026 23:59:59 WIB
   const DEADLINE_DATE = new Date('2026-12-06T23:59:59+07:00');
