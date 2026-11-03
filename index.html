@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PENDAFTARAN PETUGAS RANGKAIAN KEGIATAN NATAL 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-panel">
+      <!-- Banner Spanduk Responsive -->
+      <div class="banner-container">
+        <img src="spanduk.png" alt="Banner Rangkaian Kegiatan Natal 2026" class="header-banner">
+      </div>
+
+      <h2>PENDAFTARAN PETUGAS RANGKAIAN KEGIATAN NATAL 2026</h2>
+      
+      <div class="intro-box">
+        <p>Untuk keperluan penyediaan name tag dan konsumsi, maka kami Panitia Natal 2026 membutuhkan nama dan jadwal tugas dari teman-teman yang akan bertugas dalam Rangkaian Kegiatan Natal 2026 Paroki Katedral, dimulai dari Sosialisasi Bulan Keluarga sampai dengan Misa Natal Pontifikal.</p>
+        <p><strong>Batas waktu pengisian : 06 Desember 2026</strong></p>
+      </div>
+
+      <!-- Pesan jika pendaftaran ditutup -->
+      <div id="closedMessage" class="closed-banner hidden">
+        ⚠️ Pendaftaran telah resmi ditutup pada 06 Desember 2026. Terima kasih atas partisipasi Anda.
+      </div>
+
+      <form id="registrationForm">
+        <!-- Honeypot -->
+        <input type="text" name="botField" id="botField" style="display:none" tabindex="-1" autocomplete="off">
+
+        <label for="completeName">Nama Lengkap <span style="color:red">*</span></label>
+        <input type="text" id="completeName" name="completeName" required>
+
+        <label>Seksi / Sub-seksi</label>
+        <div class="checkbox-group" id="sectionGroup">
+          <label><input type="checkbox" name="section" value="LITURGI - Putra Altar"> LITURGI - Putra Altar</label>
+          <label><input type="checkbox" name="section" value="LITURGI - Putri Sakristi"> LITURGI - Putri Sakristi</label>
+          <label><input type="checkbox" name="section" value="LITURGI - Pasdior"> LITURGI - Pasdior</label>
+          <label><input type="checkbox" name="section" value="LITURGI - Lektor"> LITURGI - Lektor</label>
+          <label><input type="checkbox" name="section" value="LITURGI - Sorak"> LITURGI - Sorak</label>
+          <label><input type="checkbox" name="section" value="LITURGI - Prodiakon"> LITURGI - Prodiakon</label>
+          <label><input type="checkbox" name="section" value="LITURGI - Kolektan"> LITURGI - Kolektan</label>
+          <label><input type="checkbox" name="section" value="LITURGI - Pendamping PA/PS"> LITURGI - Pendamping PA/PS</label>
+          <label><input type="checkbox" name="section" value="LITURGI - Sie Liturgi K7"> LITURGI - Sie Liturgi K7</label>
+          <label><input type="checkbox" name="section" value="KESEHATAN"> KESEHATAN</label>
+          <label><input type="checkbox" name="section" value="HAAK"> HAAK</label>
+          <label><input type="checkbox" name="section" value="P3GK"> P3GK</label>
+          <label><input type="checkbox" name="section" value="KOMSOS"> KOMSOS</label>
+          <label><input type="checkbox" name="section" value="LINGKUNGAN HIDUP"> LINGKUNGAN HIDUP</label>
+          <label><input type="checkbox" name="section" value="KKS"> KKS</label>
+          <label><input type="checkbox" name="section" value="SKK"> SKK</label>
+          <label><input type="checkbox" name="section" value="DPH"> DPH</label>
+          <label><input type="checkbox" name="section" value="Humas dan Media Relation"> Humas dan Media Relation</label>
+          <label><input type="checkbox" name="section" value="Karyawan Sekretariat Paroki"> Karyawan Sekretariat Paroki</label>
+          <label><input type="checkbox" name="section" value="Other" id="sectionOtherCheckbox"> Lainnya (Ketik sendiri)</label>
+        </div>
+        
+        <input type="text" id="otherSection" name="otherSection" placeholder="Sebutkan seksi Anda" class="hidden">
+
+        <label>Apakah Anda memerlukan Name Tag? <span style="color:red">*</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="needNametag" value="YA" required> YA</label>
+          <label><input type="radio" name="needNametag" value="TIDAK"> TIDAK</label>
+        </div>
+
+        <!-- Name Tag Section (Hidden by default) -->
+        <div id="nametagSection" class="hidden">
+          <label for="nameOnTag">Nama di Name Tag <span style="color:red">*</span></label>
+          <input type="text" id="nameOnTag" name="nameOnTag" maxlength="20">
+
+          <div class="nametag-preview-wrapper">
+            <div class="nametag-container">
+              <img src="NameTag.png" alt="Template Name Tag" id="nametagBg">
+              <div id="previewText" class="preview-text"></div>
+            </div>
+          </div>
+        </div>
+
+        <label for="phone">No HP / WA <span style="color:red">*</span></label>
+        <input type="tel" id="phone" name="phone" pattern="^08\d{7,11}$" placeholder="08..." title="Harus diawali 08 dan berjumlah 9-13 digit" required>
+
+        <label>Jadwal Tugas</label>
+        <div class="checkbox-group checkbox-group-tugas">
+          <label><input type="checkbox" name="jadwal" value="Sosialisasi Bulan Keluarga, 20 Nov 2026, Pk. 19.00 - 21.00 WIB"> Sosialisasi Bulan Keluarga, 20 Nov 2026, Pk. 19.00 - 21.00 WIB</label>
+          <label><input type="checkbox" name="jadwal" value="Sakramen Tobat, 08 Des 2026, pk. 18.30 WIB"> Sakramen Tobat, 08 Des 2026, pk. 18.30 WIB</label>
+          <label><input type="checkbox" name="jadwal" value="Sakramen Tobat, 09 Des 2026, pk. 18.30 WIB"> Sakramen Tobat, 09 Des 2026, pk. 18.30 WIB</label>
+          <label><input type="checkbox" name="jadwal" value="Sakramen Tobat, 10 Des 2026, pk. 18.30 WIB"> Sakramen Tobat, 10 Des 2026, pk. 18.30 WIB</label>
+          <label><input type="checkbox" name="jadwal" value="Sakramen Tobat, 11 Des 2026, pk. 18.30 WIB"> Sakramen Tobat, 11 Des 2026, pk. 18.30 WIB</label>
+          <label><input type="checkbox" name="jadwal" value="Misa Malam Natal, 24 Des 2026, Pk. 17.00 WIB"> Misa Malam Natal, 24 Des 2026, Pk. 17.00 WIB</label>
+          <label><input type="checkbox" name="jadwal" value="Misa Malam Natal, 24 Des 2026, Pk. 20.30 WIB"> Misa Malam Natal, 24 Des 2026, Pk. 20.30 WIB</label>
+          <label><input type="checkbox" name="jadwal" value="Misa Natal Pontifikal, 25 Des 2026, Pk. 08.30 WIB"> Misa Natal Pontifikal, 25 Des 2026, Pk. 08.30 WIB</label>
+        </div>
+
+        <label for="email">Email (Opsional, untuk salinan form)</label>
+        <input type="email" id="email" name="email">
+
+        <button type="submit" id="submitBtn">Kirim Registrasi</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal PopUp Modal via HTML5 Dialog -->
+  <dialog id="successModal" class="custom-modal">
+    <div class="modal-content">
+      <h3>Registrasi Berhasil!</h3>
+      <p>Terimakasih telah meluangkan waktu untuk mengisi form.</p>
+      <p>Semoga dalam pelayanan Natal tahun ini, kita semua mendapat sukacita dan bertumbuh dalam iman dan pertobatan sejati. Amin</p>
+      
+      <div class="salve-block">
+        <strong>Salve,</strong><br>
+        Wilayah St. Theresia dKKY<br>
+        Panitia Natal 2026<br>
+        Paroki Katedral
+      </div>
+
+      <hr>
+
+      <h4>Rincian Data yang Diisikan:</h4>
+      <div id="modalDetails" class="details-box"></div>
+
+      <button id="closeModalBtn" type="button">Tutup</button>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
