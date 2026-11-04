@@ -14,8 +14,6 @@
   <meta property="og:image" content="https://tkky.my.id/penyalalilin/banner.png" />
   <meta property="og:image:width" content="955" />
   <meta property="og:image:height" content="236" />
-  
-  
 </head>
 <body>
 
@@ -40,6 +38,12 @@
         <select id="seksiSelect" required>
           <option value="">-- Pilih Seksi/Kelompok --</option>
         </select>
+      </div>
+
+      <!-- Hidden field for custom input when "Lainnya" is selected -->
+      <div class="form-group hidden" id="seksiLainnyaGroup">
+        <label for="seksiLainnya">Tuliskan Seksi / Sub-Seksi / Kelompok Lainnya :</label>
+        <input type="text" id="seksiLainnya" placeholder="Masukkan nama seksi/kelompok">
       </div>
 
       <div class="form-group">

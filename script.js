@@ -1,17 +1,19 @@
 //https://script.google.com/macros/s/AKfycbzHlhpshcFr1NncAr-bhXPtSU_2dIme025zYQK1DBrd3hAXUaYs_vEehd4JT3hGb-fn/exec
 
+//https://script.google.com/macros/s/AKfycbzHlhpshcFr1NncAr-bhXPtSU_2dIme025zYQK1DBrd3hAXUaYs_vEehd4JT3hGb-fn/exec
+
 const API_URL = "https://script.google.com/macros/s/AKfycbzHlhpshcFr1NncAr-bhXPtSU_2dIme025zYQK1DBrd3hAXUaYs_vEehd4JT3hGb-fn/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Memuat data dari Google Sheet...");
   fetchFormData();
   setupFormSubmit();
+  setupSeksiToggle();
 });
 
 // Load data using JSONP to bypass CORS on GET requests
 function fetchFormData() {
   const script = document.createElement("script");
-  // Fixed typo: callback name is now clean and matches window.handleFormData
   script.src = `${API_URL}?callback=handleFormData`;
   
   script.onerror = (err) => {
@@ -36,11 +38,39 @@ window.handleFormData = function(data) {
 
 function populateGroups(groups) {
   const select = document.getElementById("seksiSelect");
+  
   groups.forEach(group => {
     const option = document.createElement("option");
     option.value = group;
     option.textContent = group;
     select.appendChild(option);
+  });
+
+  // Ensure "Lainnya: (tuliskan)" option exists if not returned by backend sheet
+  const hasLainnya = groups.some(g => String(g).toLowerCase().includes("lainnya"));
+  if (!hasLainnya) {
+    const optionLainnya = document.createElement("option");
+    optionLainnya.value = "Lainnya";
+    optionLainnya.textContent = "Lainnya: (tuliskan)";
+    select.appendChild(optionLainnya);
+  }
+}
+
+function setupSeksiToggle() {
+  const select = document.getElementById("seksiSelect");
+  const lainnyaGroup = document.getElementById("seksiLainnyaGroup");
+  const lainnyaInput = document.getElementById("seksiLainnya");
+
+  select.addEventListener("change", () => {
+    const isLainnya = select.value.toLowerCase().includes("lainnya");
+    if (isLainnya) {
+      lainnyaGroup.classList.remove("hidden");
+      lainnyaInput.required = true;
+    } else {
+      lainnyaGroup.classList.add("hidden");
+      lainnyaInput.required = false;
+      lainnyaInput.value = "";
+    }
   });
 }
 
@@ -85,10 +115,8 @@ function generatePersonFields(index, eventName) {
   const fieldsContainer = document.getElementById(`fields-${index}`);
   const count = parseInt(countInput.value, 10);
 
-  // Clear existing fields first
   fieldsContainer.innerHTML = "";
 
-  // If count is 0, empty, or invalid, stop here (fields remain cleared)
   if (isNaN(count) || count <= 0) {
     if (countInput.value !== "") {
       alert("Masukkan jumlah orang bertugas yang valid (minimal 1).");
@@ -96,7 +124,6 @@ function generatePersonFields(index, eventName) {
     return;
   }
 
-  // Generate input fields based on the confirmed count
   for (let i = 1; i <= count; i++) {
     const div = document.createElement("div");
     div.className = "person-input";
@@ -116,7 +143,14 @@ function setupFormSubmit() {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const seksi = document.getElementById("seksiSelect").value;
+    const selectValue = document.getElementById("seksiSelect").value;
+    const lainnyaVal = document.getElementById("seksiLainnya").value.trim();
+    
+    // Use custom written text if "Lainnya" is selected
+    const seksi = selectValue.toLowerCase().includes("lainnya") && lainnyaVal 
+      ? `Lainnya: ${lainnyaVal}` 
+      : selectValue;
+
     const namaPengisi = document.getElementById("namaPengisi").value;
     const rawPhone = document.getElementById("phonePengisi").value;
     const phonePengisi = rawPhone ? `'${rawPhone}` : "";
@@ -163,6 +197,7 @@ function setupFormSubmit() {
       responseMsg.style.color = "green";
       responseMsg.textContent = "Data petugas berhasil disimpan! Terima kasih.";
       form.reset();
+      document.getElementById("seksiLainnyaGroup").classList.add("hidden");
       document.querySelectorAll(".fields-container").forEach(c => c.innerHTML = "");
       console.log("Data berhasil dikirim ke spreadsheet.");
 
