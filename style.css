@@ -177,3 +177,94 @@ h1 {
   text-align: center;
   font-weight: bold;
 }
+/* Additional Styles for report.html */
+.report-container {
+  max-width: 950px;
+}
+
+.report-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.btn-action {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-action:hover {
+  background-color: #5a6268;
+}
+
+.btn-reload {
+  background-color: #0d6efd;
+}
+
+.btn-reload:hover {
+  background-color: #0b5ed7;
+}
+
+.badge-count {
+  background-color: #a81c1c;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+.report-header {
+  background-color: #f1f3f5;
+  color: #1a1a1a;
+}
+
+.report-seksi-block {
+  margin-bottom: 16px;
+  padding: 12px 15px;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-left: 4px solid #a81c1c;
+  border-radius: 4px;
+}
+
+.report-seksi-title {
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.report-person-list {
+  margin: 0;
+  padding-left: 5px;
+  list-style: none;
+}
+
+.person-name-item {
+  padding: 4px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed #eee;
+}
+
+.person-name-item:last-child {
+  border-bottom: none;
+}
+
+.submitter-info {
+  font-size: 0.82rem;
+  color: #777;
+  margin-left: 6px;
+}
+
+.accordion-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
